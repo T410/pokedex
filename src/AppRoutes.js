@@ -6,6 +6,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+
 import styles from "./App.module.css";
 import Navbar from "./Components/Navbar/Navbar";
 import LoadingSpinner from "./Components/LoadingSpinner/LoadingSpinner";
