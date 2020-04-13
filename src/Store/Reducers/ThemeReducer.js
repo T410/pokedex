@@ -22,7 +22,7 @@ const themeReducer = (state = initialState, action) => {
     case REHYDRATE:
       let theme;
       if (action.payload && action.payload.theme) {
-        theme = action.payload.theme;
+        theme = action.payload.theme.theme;
       } else {
         theme = "light";
       }
