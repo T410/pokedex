@@ -1,11 +1,10 @@
 .pagination {
-  grid-area: header;
-  margin: 15px auto;
   display: flex;
   list-style: none;
   outline: none;
   justify-content: center;
   padding-inline-start: 0px;
+  margin-block: 0.25em 0;
 }
 .pagination > .active > a {
   background-color: #b04632;
@@ -14,7 +13,7 @@
 }
 .pagination > li > a {
   border: 1px solid #b04632;
-  padding: 5px 10px;
+  padding: 0 10px;
   outline: none;
   cursor: pointer;
 }
@@ -33,7 +32,7 @@
   color: #b04632;
 }
 .pagination > li:first-child > a,
-.pagination > li:first-child > span{
+.pagination > li:first-child > span {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }

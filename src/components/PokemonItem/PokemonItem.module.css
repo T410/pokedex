@@ -1,4 +1,4 @@
-.pokemon-view {
+.pokemonView {
   border: 1px solid #777;
   border-radius: 5px;
   width: 100%;
@@ -9,25 +9,25 @@
   grid-template-rows: 5fr 1fr;
 }
 
-.pokemon-name {
+.pokemonName {
   margin-bottom: 1em;
   display: grid;
   color: #222;
 }
 
-.pokemon-icon-view {
+.pokemonIconView {
   display: grid;
   align-items: center;
   justify-items: center;
   height: 90%;
 }
 
-.pokemon-icon {
+.pokemonIcon {
   /* display: grid; */
   width: 60%;
 }
 
-.pokemon-link {
+.pokemonLink {
   width: 100%;
   text-decoration: none;
 }

@@ -1,11 +1,19 @@
 import React, { useState, useEffect, Suspense } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { hide } from "../../Store/Actions/Actions";
 import axios from "axios";
 import { Link, useRouteMatch } from "react-router-dom";
-import "./PokemonDetail.css";
-import LoadingSpinner from "../common/LoadingSpinner/LoadingSpinner";
-const Image = React.lazy(() => import("../common/Image/Image"));
+import styles from "./PokemonDetail.module.css";
+import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
+const Image = React.lazy(() => import("../../Components/Image/Image"));
 
 const PokemonDetail = () => {
+  const dispatch = useDispatch();
+  const paginationVisible = useSelector((state) => state.paginationVis.visible);
+  if (paginationVisible) {
+    dispatch(hide());
+  }
+
   const { name } = useRouteMatch().params;
   const nameToShow = name[0].toUpperCase() + name.slice(1);
   const [details, setDetails] = useState(null);
@@ -16,45 +24,47 @@ const PokemonDetail = () => {
   }, []);
 
   return (
-    <div className="detail-outer-view">
-      <div className="detail-middle-view">
-        <div className="back-view">
+    <div className={styles.detailOuterView}>
+      <div className={styles.detailMiddleView}>
+        <div className={styles.backView}>
           <Link to="/pokemon">
-            <img className="back" src={require("../../img/back.png")} />
+            <img
+              className={styles.back}
+              src={require("../../Assets/back.png")}
+            />
           </Link>
         </div>
-        <div className="detail-icon-view">
+        <div className={styles.detailIconView}>
           <Suspense fallback={<LoadingSpinner />}>
             {details && (
               <>
                 <Image
                   src={`http://pokestadium.com/sprites/xy/${name}.gif`}
-                  fallbackSrc={require("../../img/broken.gif")}
+                  fallbackSrc={require("../../Assets/broken.gif")}
                   timeoutInterval={5}
-                  className="detail-pokemon-icon"
                 />
-                <p className={"pokemon-name"}>{nameToShow}</p>
-                <div className="detail-inner-view">
-                  <div className="detail-item">
+                <p className={styles.pokemonName}>{nameToShow}</p>
+                <div className={styles.detailInnerView}>
+                  <div className={styles.detailItem}>
                     <p>ID:</p>
-                    <p className="value">{details.id}</p>
+                    <p className={styles.value}>{details.id}</p>
                   </div>
-                  <div className="detail-item">
+                  <div className={styles.detailItem}>
                     <p>Type:</p>
                     {details.types.map((type, index) => (
-                      <p className="value" key={index}>
+                      <p className={styles.value} key={index}>
                         {type.type.name}
                       </p>
                     ))}
                   </div>
-                  <div className="detail-item">
+                  <div className={styles.detailItem}>
                     <p>Height:</p>
-                    <p className="value">{details.height}</p>
+                    <p className={styles.value}>{details.height}</p>
                   </div>
-                  <div className="detail-item">
+                  <div className={styles.detailItem}>
                     <p>Abilities:</p>
                     <br />
-                    <ul className="detail-ul">
+                    <ul className={styles.detailUl}>
                       {details.abilities.map((ability, index) => (
                         <li key={index}>{ability.ability.name}</li>
                       ))}

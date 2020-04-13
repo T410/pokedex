@@ -1,24 +1,22 @@
 import React, { Suspense } from "react";
-import "./App.css";
+import styles from "./App.module.css";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect,
 } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import { Welcome } from "./components/components";
-import LoadingSpinner from "./components/common/LoadingSpinner/LoadingSpinner";
+import Navbar from "./Components/Navbar/Navbar";
+import LoadingSpinner from "./Components/LoadingSpinner/LoadingSpinner";
 import { store, persistor } from "./Store/Store";
 import { PersistGate } from "redux-persist/integration/react";
-import { Provider, useSelector } from "react-redux";
+import { Provider} from "react-redux";
 
 const PokemonDetail = React.lazy(() =>
-  import("./components/PokemonDetail/PokemonDetail")
+  import("./Pages/PokemonDetail/PokemonDetail")
 );
 const PokemonList = React.lazy(() =>
-  import("./components/PokemonList/PokemonList")
+  import("./Pages/PokemonList/PokemonList")
 );
 
 function App() {
@@ -29,9 +27,9 @@ function App() {
           <Route exact path="/">
             <Redirect to="/pokemon" />
           </Route>
-          <div className="App">
+          <div className={styles.App}>
             <Navbar />
-            <div className="content">
+            {/* <div className={styles.content}> */}
               <Switch>
                 <Route exact path="/pokemon">
                   <Suspense fallback={<LoadingSpinner />}>
@@ -44,7 +42,7 @@ function App() {
                   </Suspense>
                 </Route>
               </Switch>
-            </div>
+            {/* </div> */}
           </div>
         </Router>
       </PersistGate>

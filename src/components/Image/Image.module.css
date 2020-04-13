@@ -5,3 +5,7 @@
 .visible {
   visibility: visible;
 }
+
+.image{
+  width: 40%;
+}

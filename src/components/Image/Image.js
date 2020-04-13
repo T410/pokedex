@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./Image.css";
+import styles from "./Image.module.css";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
-const Image = ({ src, fallbackSrc, timeoutInterval, className }) => {
+const Image = ({ src, fallbackSrc, timeoutInterval }) => {
   const [loading, setLoading] = useState(true);
   const [errored, setErrored] = useState(false);
 
@@ -27,13 +27,13 @@ const Image = ({ src, fallbackSrc, timeoutInterval, className }) => {
 
       {!errored ? (
         <img
-          className={className}
+          className={styles.image}
           src={src}
           onError={fallback}
           onLoad={() => setLoading(false)}
         />
       ) : (
-        <img className={className} src={fallbackSrc} />
+        <img className={styles.image} src={fallbackSrc} />
       )}
     </>
   );

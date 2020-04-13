@@ -1,0 +1,64 @@
+.navbar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 4em;
+  top: 0;
+  background-color: white;
+  z-index: 9;
+  font-size: 14pt;
+  width: 100%;
+  box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes breathe {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logoBreathe {
+    animation: breathe infinite alternate-reverse 3s linear;
+  }
+}
+
+@keyframes expand {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(2) translateY(0.5em);
+  }
+}
+
+@keyframes shrink {
+  from {
+    transform: scale(2) translateY(0.5em);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logoExpand {
+    animation: expand 0.2s ease-in;
+    animation-fill-mode: forwards;
+  }
+
+  .logoShrink {
+    animation: shrink 0.4s ease-in;
+    animation-fill-mode: forwards;
+  }
+}
+
+.headerLogo {
+  height: 1.25em;
+  margin-top: 0.25em;
+}
