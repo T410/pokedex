@@ -6,11 +6,16 @@ const dataUpdate = (genNumber) => {
     let ID = val.split("/");
     return parseInt(ID[ID.length - 2]);
   };
-  
+
+  /**
+   * To compare and return the compared result
+   * @param {number} a
+   * @param {number} b
+   */
   const compare = (a, b) => {
     const aID = getID(a.url),
       bID = getID(b.url);
-  
+
     let comparison = 0;
     if (aID > bID) {
       comparison = 1;
@@ -23,11 +28,11 @@ const dataUpdate = (genNumber) => {
     axios
       .get(`https://pokeapi.co/api/v2/generation/${genNumber}/`)
       .then(({ data }) => {
-        const pokemons = data.pokemon_species.sort(compare)
+        const pokemons = data.pokemon_species.sort(compare);
         dispatch({
           type: DATA_UPDATE,
           payload: {
-            genNumber: genNumber,
+            genNumber,
             data: pokemons,
           },
         });

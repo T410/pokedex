@@ -1,0 +1,3 @@
+const POKEMON_UPDATE = "POKEMON_UPDATE";
+
+export { POKEMON_UPDATE };

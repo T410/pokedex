@@ -12,7 +12,6 @@
 .pokemonName {
   margin-bottom: 1em;
   display: grid;
-  color: #222;
 }
 
 .pokemonIconView {

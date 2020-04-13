@@ -1,18 +1,21 @@
 .detailOuterView {
-  border: 1px solid #777;
-  border-radius: 5px;
   width: auto;
-  height: 25em;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
+  justify-content: flex-start;
+  justify-items: flex-start;
+  align-items: flex-start;
   margin-top: 10em;
+  overflow: hidden;
 }
 
 .detailMiddleView {
+  border: 1px solid #777;
+  border-radius: 5px;
   margin: 1em;
+  padding: 1em;
+  height: 25em;
 }
 
 .detailInnerView {

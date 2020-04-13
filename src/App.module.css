@@ -8,6 +8,44 @@ p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  height: 100%;
+}
+
+* {
+  text-decoration: none;
+}
+
+.dark {
+  background-color: rgb(27, 27, 27);
+}
+
+.dark * {
+  color: white;
+}
+
+.dark button {
+  background-color: rgb(27, 27, 27);
+}
+
+.dark header {
+  background-color: rgb(27, 27, 27);
+}
+
+.light {
+  background-color: white;
+}
+
+.light * {
+  color: black;
+}
+
+.light button {
+  background-color: white;
+}
+
+.light header {
+  background-color: white;
 }
 
 .content {

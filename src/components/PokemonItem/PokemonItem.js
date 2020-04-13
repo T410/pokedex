@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { Suspense } from "react";
 import { Link } from "react-router-dom";
 import styles from "./PokemonItem.module.css";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
@@ -19,7 +19,7 @@ const PokemonItem = ({ pokemon, pokemonID }) => {
             />
           </Suspense>
         </div>
-        <div className={styles.pokemonName}>{name}</div>
+        <div className={styles.pokemonName}><p>{name}</p></div>
       </div>
     </Link>
   );

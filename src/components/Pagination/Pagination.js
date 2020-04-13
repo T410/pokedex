@@ -1,7 +1,7 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
-import { chooseGen, dataUpdate } from "../../Store/Actions/Actions";
+import { chooseGen } from "../../Store/Actions/Actions";
 import styles from "./Pagination.module.css";
 
 const Pagination = () => {

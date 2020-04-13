@@ -1,6 +1,6 @@
 .pokemonListOuter {
-  /* border: 1px solid #777; */
   margin-top: 5em;
+  margin-bottom: 5em;
   justify-content: center;
   max-width: 60em;
   min-width: 15em;
@@ -23,7 +23,6 @@
   grid-area: main;
   display: grid;
   width: 100%;
-  /* grid-area: main; */
   grid-template-columns: repeat(3, 15em);
   align-items: center;
   justify-items: center;
