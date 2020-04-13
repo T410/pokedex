@@ -1,0 +1,33 @@
+.pokemon-view {
+  border: 1px solid #777;
+  border-radius: 5px;
+  width: 100%;
+  height: 200px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto;
+  grid-template-rows: 5fr 1fr;
+}
+
+.pokemon-name {
+  margin-bottom: 1em;
+  display: grid;
+  color: #222;
+}
+
+.pokemon-icon-view {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  height: 90%;
+}
+
+.pokemon-icon {
+  /* display: grid; */
+  width: 60%;
+}
+
+.pokemon-link {
+  width: 100%;
+  text-decoration: none;
+}

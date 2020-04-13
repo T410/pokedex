@@ -1,34 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+import "./App.css";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  Redirect
+  Redirect,
 } from "react-router-dom";
-import {
-  Welcome,
-  PokemonList
-} from './components/components';
+import Navbar from "./components/Navbar/Navbar";
+import { Welcome } from "./components/components";
+import LoadingSpinner from "./components/common/LoadingSpinner/LoadingSpinner";
+import { store, persistor } from "./Store/Store";
+import { PersistGate } from "redux-persist/integration/react";
+import { Provider, useSelector } from "react-redux";
+
+const PokemonDetail = React.lazy(() =>
+  import("./components/PokemonDetail/PokemonDetail")
+);
+const PokemonList = React.lazy(() =>
+  import("./components/PokemonList/PokemonList")
+);
 
 function App() {
   return (
-    <Router>
-      <Route exact path="/">
-        <Redirect to='/pokemon' />
-      </Route>
-      <div className="App">
-        <header className="App-header">
-          <img src={require('./img/pokemon.png')} className="App-logo" alt="logo" />
-          {/* <Link to="/pokemon">Home</Link> */}
-          {/* <Link to="/pokesmon/charizard">Charizard</Link> */}
-          {/* <Welcome /> */}
-        </header>
-        <PokemonList />
-      </div>
-    </Router>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Router>
+          <Route exact path="/">
+            <Redirect to="/pokemon" />
+          </Route>
+          <div className="App">
+            <Navbar />
+            <div className="content">
+              <Switch>
+                <Route exact path="/pokemon">
+                  <Suspense fallback={<LoadingSpinner />}>
+                    <PokemonList />
+                  </Suspense>
+                </Route>
+                <Route path="/pokemon/:name">
+                  <Suspense fallback={<LoadingSpinner />}>
+                    <PokemonDetail />
+                  </Suspense>
+                </Route>
+              </Switch>
+            </div>
+          </div>
+        </Router>
+      </PersistGate>
+    </Provider>
   );
 }
 

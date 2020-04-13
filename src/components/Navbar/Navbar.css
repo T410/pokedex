@@ -1,0 +1,35 @@
+.header {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: fit-content;
+  top: 0;
+  background-color: white;
+  z-index: 9;
+  font-size: 14pt;
+  width: 100%;
+  box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes logo-breathe {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .header-logo {
+    animation: logo-breathe infinite alternate-reverse 3s linear;
+  }
+}
+
+.header-logo {
+  position: absolute;
+  height: 1.5em;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+}

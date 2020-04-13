@@ -1,0 +1,38 @@
+import { DATA_UPDATE } from "./DataActionTypes";
+import axios from "axios";
+
+const dataUpdate = (genNumber) => {
+  const getID = (val) => {
+    let ID = val.split("/");
+    return parseInt(ID[ID.length - 2]);
+  };
+  
+  const compare = (a, b) => {
+    const aID = getID(a.url),
+      bID = getID(b.url);
+  
+    let comparison = 0;
+    if (aID > bID) {
+      comparison = 1;
+    } else if (aID < bID) {
+      comparison = -1;
+    }
+    return comparison;
+  };
+  return (dispatch) => {
+    axios
+      .get(`https://pokeapi.co/api/v2/generation/${genNumber}/`)
+      .then(({ data }) => {
+        const pokemons = data.pokemon_species.sort(compare)
+        dispatch({
+          type: DATA_UPDATE,
+          payload: {
+            genNumber: genNumber,
+            data: pokemons,
+          },
+        });
+      });
+  };
+};
+
+export { dataUpdate };
