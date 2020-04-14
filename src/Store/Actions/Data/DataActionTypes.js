@@ -1,3 +1,4 @@
 const DATA_UPDATE = "DATA_UPDATE";
+const DATA_PURGE = "DATA_PURGE";
 
-export { DATA_UPDATE };
+export { DATA_UPDATE, DATA_PURGE };

@@ -5,17 +5,14 @@ import paginationVisReducer from "./PaginationVisReducer";
 import themeReducer from "./ThemeReducer";
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-
-const rootPersistConfig = {
-  key: "root",
-  storage,
-  blacklist: ["currentGen", "data", "paginationVis", "pokemon"],
-};
+import {
+  rootPersistConfig,
+  dataPersistConfig,
+} from "../PersistorConfigs/Config";
 
 const rootReducer = combineReducers({
   currentGen: genReducer,
-  data: dataReducer,
+  data: persistReducer(dataPersistConfig, dataReducer),
   paginationVis: paginationVisReducer,
   pokemon: pokemonReducer,
   theme: themeReducer,

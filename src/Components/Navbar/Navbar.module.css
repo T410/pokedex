@@ -67,3 +67,9 @@
   right: 0;
   margin: 1em 1em 1em 1em;
 }
+
+.purgeButton {
+  position: absolute;
+  right: 0;
+  margin: 3em 1em 1em 1em;
+}

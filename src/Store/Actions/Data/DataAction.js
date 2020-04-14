@@ -1,4 +1,4 @@
-import { DATA_UPDATE } from "./DataActionTypes";
+import { DATA_UPDATE, DATA_PURGE } from "./DataActionTypes";
 import axios from "axios";
 
 const dataUpdate = (genNumber) => {
@@ -40,4 +40,8 @@ const dataUpdate = (genNumber) => {
   };
 };
 
-export { dataUpdate };
+const dataPurge = () => ({
+  type: DATA_PURGE,
+});
+
+export { dataUpdate, dataPurge };
