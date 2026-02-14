@@ -2,9 +2,9 @@ import React, { Suspense } from "react";
 import { useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
-  Redirect,
+  Navigate,
 } from "react-router-dom";
 
 import styles from "./App.module.css";
@@ -21,9 +21,6 @@ const AppRoutes = () => {
 
   return (
     <Router>
-      <Route exact path="/">
-        <Redirect to="/pokemon" />
-      </Route>
       <div
         className={[
           styles.App,
@@ -31,18 +28,25 @@ const AppRoutes = () => {
         ].join(" ")}
       >
         <Navbar />
-        <Switch>
-          <Route exact path="/pokemon">
-            <Suspense fallback={<LoadingSpinner />}>
-              <PokemonList />
-            </Suspense>
-          </Route>
-          <Route path="/pokemon/:name">
-            <Suspense fallback={<LoadingSpinner />}>
-              <PokemonDetail />
-            </Suspense>
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Navigate to="/pokemon" replace />} />
+          <Route
+            path="/pokemon"
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <PokemonList />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/pokemon/:name"
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <PokemonDetail />
+              </Suspense>
+            }
+          />
+        </Routes>
       </div>
     </Router>
   );

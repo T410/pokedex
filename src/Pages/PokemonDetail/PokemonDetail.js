@@ -1,7 +1,7 @@
 import React, { useEffect, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { hide, pokemonUpdate } from "../../Store/Actions/Actions";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styles from "./PokemonDetail.module.css";
 import { LoadingSpinner } from "../../Components/Components";
 const SuspandablePokemonDetail = React.lazy(() =>
@@ -18,7 +18,7 @@ const PokemonDetail = () => {
   }, []);
 
   const pokemon = useSelector((state) => state.pokemon);
-  const { name } = useRouteMatch().params;
+  const { name } = useParams();
   useEffect(() => {
     if (pokemon.name !== name) {
       dispatch(pokemonUpdate(name));
